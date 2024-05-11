@@ -1,5 +1,6 @@
 import {useReservationStore} from "store/reservationStore.ts";
 import {useEffect} from "react";
+import {formatMoneyToUi} from "helpers/moneyFormatter.ts";
 
 function ReservationsListView() {
     const {reservations, fetchReservations} = useReservationStore();
@@ -29,8 +30,7 @@ function ReservationsListView() {
                             <td>{reservation.date_from}</td>
                             <td>{reservation.date_to}</td>
                             <td>{reservation.number_of_nights}</td>
-                            <td>{reservation.total_price}</td>
-                            {/*todo format price from grosze to zł*/}
+                            <td>{formatMoneyToUi(reservation.total_price)}</td>
                         </tr>
                     ))}
                     </tbody>
