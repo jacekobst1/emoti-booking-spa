@@ -1,5 +1,5 @@
+import ReservationsListView from "views/reservations/ReservationsListView.tsx";
 import App from "../App.tsx";
-import ReservationsListView from "../views/reservations/ReservationsListView.tsx";
 
 export const HomeRoute = {
     path: '/',
