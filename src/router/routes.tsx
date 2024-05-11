@@ -1,5 +1,6 @@
 import ReservationsListView from "views/reservations/ReservationsListView.tsx";
 import App from "../App.tsx";
+import ReservationCreateView from "views/reservations/ReservationCreateView.tsx";
 
 export const HomeRoute = {
     path: '/',
@@ -7,6 +8,11 @@ export const HomeRoute = {
 };
 
 export const ReservationsListRoute = {
-    path: '/reservations-list',
+    path: '/reservations',
     element: <ReservationsListView/>,
 };
+
+export const ReservationCreateRoute = {
+    path: '/reservations/new',
+    element: <ReservationCreateView/>,
+}

@@ -1,17 +1,22 @@
 import {create} from 'zustand'
 import {PaginatedList} from "types/pagination.ts";
-import {Reservation} from "types/reservation.ts";
-import {getReservations} from "actions/reservationsActions.ts";
+import {Reservation, ReservationPayload} from "types/reservation.ts";
+import {getReservations, postReservation} from "actions/reservationsActions.ts";
 
 interface ReservationState {
     reservations?: PaginatedList<Reservation>
     fetchReservations: () => void
+    postReservation: (reservation: Reservation) => void
 }
 
 export const useReservationStore = create<ReservationState>()((set) => ({
     reservations: undefined,
-    fetchReservations: async () => {
+    async fetchReservations() {
         const response = await getReservations();
         set(() => ({reservations: response}))
-    }
+    },
+    async postReservation(payload: ReservationPayload) {
+        await postReservation(payload);
+        this.fetchReservations();
+    },
 }))

@@ -7,3 +7,8 @@ export interface Reservation {
     created_at: string,
     updated_at: string,
 }
+
+export interface ReservationPayload {
+    date_from: string;
+    date_to: string;
+}
