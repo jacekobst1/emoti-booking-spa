@@ -16,6 +16,7 @@
     "react-day-picker": "^8.10.1",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.23.1",
+    "sweetalert2": "^11.11.0",
     "zustand": "^4.5.2"
   },
   "devDependencies": {
