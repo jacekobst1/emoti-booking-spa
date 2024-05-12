@@ -5,9 +5,9 @@ interface Config {
 }
 
 const config: Config = {
-    apiUrl: import.meta.env.VITE_API_URL || "http://emoti-booking-api.test/api",
-    fullUrl: import.meta.env.VITE_FULL_URL || "http://emoti-booking-api.test",
-    shortUrl: import.meta.env.VITE_SHORT_URL || "emoti-booking-api.test",
+    apiUrl: import.meta.env.VITE_API_URL || "http://emoti-booking.test/api",
+    fullUrl: import.meta.env.VITE_FULL_URL || "http://emoti-booking.test",
+    shortUrl: import.meta.env.VITE_SHORT_URL || "emoti-booking.test",
 };
 
 export default config;

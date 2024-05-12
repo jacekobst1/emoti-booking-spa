@@ -8,4 +8,8 @@ export default defineConfig({
         react(),
         tsconfigPaths(),
     ],
+    server: {
+        host: 'app.emoti-booking.test',
+        port: 5174,
+    },
 })
