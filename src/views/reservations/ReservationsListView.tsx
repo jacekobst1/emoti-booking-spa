@@ -1,5 +1,5 @@
 import {useReservationStore} from "store/reservationStore.ts";
-import React, {useEffect} from "react";
+import {useEffect} from "react";
 import {formatMoneyToUi} from "helpers/moneyFormatter.ts";
 import {Link} from "react-router-dom";
 import {ReservationCreateRoute} from "router/routes.tsx";
@@ -13,10 +13,10 @@ function ReservationsListView() {
 
     return (
         <>
-            <div className="flex flex-col items-center mt-5">
-                <div className="flex items-center">
+            <div className="container mx-auto flex flex-col mt-10">
+                <div className="flex justify-between">
                     <h1 className="text-3xl">Reservations list</h1>
-                    <Link to={ReservationCreateRoute.path} className="btn btn-sm btn-primary ml-36">Create new</Link>
+                    <Link to={ReservationCreateRoute.path} className="btn btn-primary ml-36">Create new</Link>
                 </div>
 
                 <div className="overflow-x-auto mt-10">

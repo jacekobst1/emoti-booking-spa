@@ -31,31 +31,40 @@ function ReservationCreateView() {
 
     return (
         <>
-            <Link to={ReservationsListRoute.path} className="btn btn-sm mt-5 ml-5">Return</Link>
-
-            <div className="flex flex-col items-center">
-                <h1 className="text-3xl ml-2">Create new reservation</h1>
-
-                <div className="flex mt-20">
-                    <div className="flex flex-col items-start">
-                        <div>
-                            <span className="font-bold text-xl ml-5">Date from:</span>
-                            <span className="text-primary font-bold ml-2">{formattedDateFrom}</span>
-                        </div>
-                        <div className="divider mx-5"/>
-                        <DayPicker mode="single" selected={dateFrom} onSelect={setDateFrom}/>
-                    </div>
-                    <div className="flex flex-col items-start ml-10">
-                        <div>
-                            <span className="font-bold text-xl ml-5">Date to:</span>
-                            <span className="text-primary font-bold ml-2">{formattedDateTo}</span>
-                        </div>
-                        <div className="divider mx-5"/>
-                        <DayPicker mode="single" selected={dateTo} onSelect={setDateTo}/>
-                    </div>
+            <div className="container mx-auto flex flex-col mt-10">
+                <div>
                 </div>
 
-                <button onClick={save} className="btn btn-primary mt-10">Save</button>
+                <div className="flex flex-col items-center">
+                    <h1 className="text-3xl ml-2">Create new reservation</h1>
+
+                    <div className="flex mt-20">
+                        <div className="flex flex-col items-start">
+                            <div>
+                                <span className="font-bold text-xl ml-5">Date from:</span>
+                                <span className="text-primary font-bold ml-2">{formattedDateFrom}</span>
+                            </div>
+                            <div className="divider mx-5"/>
+                            <DayPicker mode="single" selected={dateFrom} onSelect={setDateFrom}/>
+                        </div>
+                        <div className="flex flex-col items-start ml-10">
+                            <div>
+                                <span className="font-bold text-xl ml-5">Date to:</span>
+                                <span className="text-primary font-bold ml-2">{formattedDateTo}</span>
+                            </div>
+                            <div className="divider mx-5"/>
+                            <DayPicker mode="single" selected={dateTo} onSelect={setDateTo}/>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div className="flex justify-end">
+                    <div>
+                        <Link to={ReservationsListRoute.path} className="btn">Cancel</Link>
+                        <button onClick={save} className="btn btn-primary ml-2">Save</button>
+                    </div>
+                </div>
             </div>
         </>
     );
