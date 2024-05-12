@@ -2,13 +2,16 @@ import {useMemo, useState} from "react";
 import {DayPicker} from "react-day-picker";
 import "react-day-picker/src/style.css";
 import {format} from "date-fns";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {ReservationsListRoute} from "router/routes.tsx";
+import {useReservationStore} from "store/reservationStore.ts";
+import fireToast from "lib/toast";
 
 function ReservationCreateView() {
-    // const {postReservation} = useReservationStore();
+    const {postReservation} = useReservationStore();
     const [dateFrom, setDateFrom] = useState<Date>();
     const [dateTo, setDateTo] = useState<Date>();
+    const navigate = useNavigate();
 
     const {formattedDateFrom, formattedDateTo} = useMemo(() => {
         return {
@@ -17,8 +20,14 @@ function ReservationCreateView() {
         }
     }, [dateFrom, dateTo]);
 
-    // async function postReservation() {
-    // }
+    async function save() {
+        await postReservation({
+            date_from: formattedDateFrom,
+            date_to: formattedDateTo,
+        });
+        void fireToast('success', 'Reservation was created');
+        navigate(ReservationsListRoute.path);
+    }
 
     return (
         <>
@@ -46,7 +55,7 @@ function ReservationCreateView() {
                     </div>
                 </div>
 
-                <button className="btn btn-primary mt-10">Save</button>
+                <button onClick={save} className="btn btn-primary mt-10">Save</button>
             </div>
         </>
     );

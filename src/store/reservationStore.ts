@@ -6,17 +6,17 @@ import {getReservations, postReservation} from "actions/reservationsActions.ts";
 interface ReservationState {
     reservations?: PaginatedList<Reservation>
     fetchReservations: () => void
-    postReservation: (reservation: Reservation) => void
+    postReservation: (payload: ReservationPayload) => void
 }
 
-export const useReservationStore = create<ReservationState>()((set) => ({
+export const useReservationStore = create<ReservationState>()((set, get) => ({
     reservations: undefined,
     async fetchReservations() {
         const response = await getReservations();
-        set(() => ({reservations: response}))
+        set({reservations: response});
     },
     async postReservation(payload: ReservationPayload) {
         await postReservation(payload);
-        this.fetchReservations();
+        await get().fetchReservations();
     },
 }))
