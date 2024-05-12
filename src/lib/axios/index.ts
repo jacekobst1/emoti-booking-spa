@@ -1,6 +1,7 @@
-import axios from 'axios';
+import axios, {InternalAxiosRequestConfig} from 'axios';
 import config from "config";
 import fireToast from "lib/toast";
+import Cookies from "js-cookie";
 
 const axiosInstance = axios.create({
     baseURL: config.apiUrl,
@@ -9,7 +10,18 @@ const axiosInstance = axios.create({
         'Content-Type': 'application/json',
         'Accept': 'application/json',
     },
-    // withCredentials: true,
+    withCredentials: true,
+});
+
+// Send X-XSRF-TOKEN header in every request
+axiosInstance.interceptors.request.use((config: InternalAxiosRequestConfig) => {
+    const xsrfToken = Cookies.get('XSRF-TOKEN');
+
+    if (xsrfToken) {
+        config.headers['X-XSRF-TOKEN'] = xsrfToken;
+    }
+
+    return config;
 });
 
 // Handle exceptions
