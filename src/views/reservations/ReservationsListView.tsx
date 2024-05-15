@@ -23,7 +23,7 @@ function ReservationsListView() {
                     <table className="table">
                         <thead>
                         <tr>
-                            <th></th>
+                            <th>No.</th>
                             <th>Date from</th>
                             <th>Date to</th>
                             <th>Number of nights</th>
@@ -33,7 +33,7 @@ function ReservationsListView() {
                         <tbody>
                         {reservations?.data.map((reservation, index) => (
                             <tr key={index}>
-                                <td>{index + 1}</td>
+                                <td>{index + 1}.</td>
                                 <td>{reservation.date_from}</td>
                                 <td>{reservation.date_to}</td>
                                 <td>{reservation.number_of_nights}</td>
